@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>A fallback action, if for some reason the storeId variable is empty, ask the user for the domain name of the store they are on to search for a Store record.</description>
+    <environments>Default</environments>
+    <interviewLabel>AF - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AF - UAIS011 - Get StoreId from domain name</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Store</name>
+        <label>Get Store</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>s_c__Domain__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>storeDomain</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__Domain__c</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>storeDomain</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>storeDomain</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>storeDomain</elementReference>
+            </value>
+        </filters>
+        <object>s_c__Store__c</object>
+        <outputAssignments>
+            <assignToReference>storeId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+        <sortField>s_c__Default__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Store</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The domain name of the store the user is currently on. This will be used to search for a Store record if one is needed.</description>
+        <name>storeDomain</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The storeId from the store with matched record from the domain name.</description>
+        <name>storeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Set_Variables</name>
+        <label>Assign: Set Variables</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>contactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>contactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>storeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>storeId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Basic flow to help set the custom variables</description>
+    <environments>Default</environments>
+    <interviewLabel>AF - UAIS011 - Set StoreId {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AF - UAIS011 - Set Variables</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Set_Variables</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The contact Id of the current user.</description>
+        <name>contactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>The StoreId to set the storeId variable to.</description>
+        <name>storeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>a1tfl000000sCLxAAM</stringValue>
+        </value>
+    </variables>
+</Flow>

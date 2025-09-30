@@ -1,0 +1,56 @@
+{
+  "required" : [ "fromDate", "productId", "storeId", "untilDate" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "bookableLocationId" : {
+      "title" : "bookableLocationId",
+      "description" : "The 18-character alphanumeric location Id of a specific bookable location chosen by the user. Use if the user has selected a bookable location; if blank, the action will return slots across broader filters like country.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "country" : {
+      "title" : "country",
+      "description" : "The user's country for filtering locations, in ISO 3166 alpha-3 format (e.g., 'USA'). Use to broaden search if no bookableLocationId; combine with dates for regional slots—do not include state or sub-regions, as they are not supported and will error; if user mentions state, incorporate into conversation but pass only country here.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "fromDate" : {
+      "title" : "fromDate",
+      "description" : "The start date for searching slots, in YYYY-MM-DD format (e.g., '2025-07-19'). Must be a future date and before or equal to untilDate; if past or invalid, action may return empty—prompt user for future dates.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "productId" : {
+      "title" : "productId",
+      "description" : "The 18-character alphanumeric Product2 ID of the bookable product. Always confirm purchasability first with storeId; validate ID format before passing.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "state" : {
+      "title" : "state",
+      "description" : "The state or province of the current user, used to find locations. Must use the state code appropriate for the input country. Eg Florida would be 'FL'",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The 18-character alphanumeric ID of the current store from the messaging session (e.g., via Store__c). Required for all calls; if missing, set via GetStoreFromDomainName action first.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "untilDate" : {
+      "title" : "untilDate",
+      "description" : "The end date for searching slots, in YYYY-MM-DD format (e.g., '2025-08-19'). Must be a future date and after or equal to fromDate; extend range if no slots found.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

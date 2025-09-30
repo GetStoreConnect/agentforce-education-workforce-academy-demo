@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Add_Id_to_var</name>
+        <label>Assign: Add Id to var</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>certificationId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>certification.Id</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>This action gets the Certification record Id from a certification chosen by the user.</description>
+    <environments>Default</environments>
+    <interviewLabel>AF - UAIS002 - Get Certification Id {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AF - UAIS002 - Get Certification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Certification</name>
+        <label>Get Certification</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Add_Id_to_var</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>s_c__Display_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>certificationName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>certificationName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__Hide__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>s_c__Product_Category__c</object>
+        <outputReference>certification</outputReference>
+        <queriedFields>s_c__Title__c</queriedFields>
+        <queriedFields>s_c__Subtitle__c</queriedFields>
+        <queriedFields>s_c__Introduction_Markdown__c</queriedFields>
+        <queriedFields>s_c__Information_Markdown__c</queriedFields>
+        <queriedFields>s_c__Path__c</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Certification</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The certification record found from the certification name.</description>
+        <name>certification</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>s_c__Product_Category__c</objectType>
+    </variables>
+    <variables>
+        <description>The certification product category Id the user has chosen.</description>
+        <name>certificationId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>The name of the certification the user has chosen to pursue.</description>
+        <name>certificationName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

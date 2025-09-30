@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Outcome__c</fullName>
+    <label>Course Outcome</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Selection</fullName>
+                <default>true</default>
+                <label>Selection</label>
+            </value>
+            <value>
+                <fullName>Enrolled</fullName>
+                <default>false</default>
+                <label>Enrolled</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Did Not Attend</fullName>
+                <default>false</default>
+                <label>Did Not Attend</label>
+            </value>
+            <value>
+                <fullName>Not Completed</fullName>
+                <default>false</default>
+                <label>Not Completed</label>
+            </value>
+            <value>
+                <fullName>Complete Did Not Pass</fullName>
+                <default>false</default>
+                <label>Complete Did Not Pass</label>
+            </value>
+            <value>
+                <fullName>Complete Pass</fullName>
+                <default>false</default>
+                <label>Complete Pass</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

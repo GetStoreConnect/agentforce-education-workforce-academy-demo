@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates a new draft order; use if no orderId or user requests new—store new orderId immediately. Never use this action if a contactId has been set.</description>
+    <invocationTarget>AF_UAIS004_Create_New_Guest_Order</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>messagingSessionId</label>
+        <name>input_messagingSessionId</name>
+        <parameterName>messagingSessionId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>storeId</label>
+        <name>input_storeId</name>
+        <parameterName>storeId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>orderId</label>
+        <name>output_orderId</name>
+        <parameterName>orderId</parameterName>
+        <parameterType>output</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>contactId</label>
+        <name>output_contactId</name>
+        <parameterName>contactId</parameterName>
+        <parameterType>output</parameterType>
+    </mappingAttributes>
+    <masterLabel>AF - UAIS004 - Create New Guest Order</masterLabel>
+    <progressIndicatorMessage>Creating your order...</progressIndicatorMessage>
+</GenAiFunction>

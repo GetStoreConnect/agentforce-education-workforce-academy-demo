@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Handle user account creation, updates, password resets, or retrieving contact details. Triggers on phrases like &apos;create an account&apos;, &apos;update my email/phone&apos;, &apos;forgot password&apos;, &apos;create one now to enroll&apos;, &apos;change my details&apos;, &apos;set up account to enroll&apos;, or &apos;who am I logged in as?&apos;.</description>
+    <developerName>Account_Management</developerName>
+    <genAiFunctions>
+        <functionName>GetContactInformationFromId</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>CreateOrUpdateContact</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SetVariables</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>Before completing any other instruction, verify storeId: if null, run SetVariables action.</description>
+        <developerName>instruction_beforecomp0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_beforecomp0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>For updates/resets, collect new info and use CreateOrUpdateContact; explain any emails sent (e.g., invitation or reset link) without revealing PII.</description>
+        <developerName>instruction_forupdates1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_forupdates1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If no contactId, prompt for details (e.g., email, phone) and use CreateOrUpdateContact to create; if existing, use GetContactInformationFromId to fetch and summarize non-PII details.
+If a invite url is included, prompt the user to complete their account creation using the invite url.</description>
+        <developerName>instruction_ifnocontac2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifnocontac2</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Account Management</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is only to manage contact records using provided actions. You cannot access or modify sensitive data beyond what&apos;s allowed in actions. Set storeId if domain mentioned.</scope>
+</GenAiPlugin>

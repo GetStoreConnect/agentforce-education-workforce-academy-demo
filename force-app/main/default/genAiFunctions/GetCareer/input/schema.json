@@ -1,0 +1,14 @@
+{
+  "required" : [ "careerName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "careerName" : {
+      "title" : "careerName",
+      "description" : "The display name of the career the user has chosen to pursue. Ask the user for this and match the name from one on the career name. Eg The career is 'Plumbing' even if the user says 'plumber'",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

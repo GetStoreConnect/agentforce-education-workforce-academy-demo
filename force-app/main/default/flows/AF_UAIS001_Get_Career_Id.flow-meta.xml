@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Set_Record_to_CareerId</name>
+        <label>Assign: Set Record to CareerId</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>careerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>career.Id</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>This action gets the Career record Id from a career chosen by the user.</description>
+    <environments>Default</environments>
+    <interviewLabel>AF - UAIS001 - Get Career Id {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AF - UAIS001 - Get Career Id</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Career</name>
+        <label>Get Career</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Set_Record_to_CareerId</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3 AND 4</filterLogic>
+        <filters>
+            <field>s_c__Display_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>careerName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>careerName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Certification_Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__Hide__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>s_c__Product_Category__c</object>
+        <outputReference>career</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>s_c__Display_Name__c</queriedFields>
+        <queriedFields>s_c__Introduction_Markdown__c</queriedFields>
+        <queriedFields>s_c__Information_Markdown__c</queriedFields>
+        <queriedFields>s_c__Title__c</queriedFields>
+        <queriedFields>s_c__Subtitle__c</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Career</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The record of the career record found from the input name.</description>
+        <name>career</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>s_c__Product_Category__c</objectType>
+    </variables>
+    <variables>
+        <description>The career product category Id the user has chosen.</description>
+        <name>careerId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>The name of the career the user has chosen to pursue.</description>
+        <name>careerName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

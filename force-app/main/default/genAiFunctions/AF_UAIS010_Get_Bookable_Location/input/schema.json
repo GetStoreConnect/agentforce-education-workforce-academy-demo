@@ -1,0 +1,42 @@
+{
+  "required" : [ "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "bookingLocationId" : {
+      "title" : "bookingLocationId",
+      "description" : "The booking location Id the user wants to get location information from. Use this to get the Name, Address, Timezone, location information or if the location is virtual.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "country" : {
+      "title" : "country",
+      "description" : "Optional: The sanitised country Alpha 3 code the user provides to search for bookable locations.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "productId" : {
+      "title" : "productId",
+      "description" : "Optional: productId input if the user wants to search for locations with this product in stock.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "state" : {
+      "title" : "state",
+      "description" : "Optional: The sanitised state code the user provides to search for bookable locations.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId currently in use.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

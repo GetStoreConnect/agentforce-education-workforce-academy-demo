@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Searches for order by orderNumber or orderId  and returns orderId, order object, line items; use when user specifies order number to set orderId and get details—ALWAYS call before displaying/modifying specific orders. Edge case: No match—prompt for correct number or view history.</description>
+    <invocationTarget>AF_UAIS004_Get_Draft_Order</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>orderId</label>
+        <name>output_orderId</name>
+        <parameterName>orderId</parameterName>
+        <parameterType>output</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>storeId</label>
+        <name>input_storeId</name>
+        <parameterName>storeId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>contactId</label>
+        <name>input_contactId</name>
+        <parameterName>contactId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <masterLabel>AF - UAIS004 - Get Order &amp; Items from Order Number</masterLabel>
+</GenAiFunction>

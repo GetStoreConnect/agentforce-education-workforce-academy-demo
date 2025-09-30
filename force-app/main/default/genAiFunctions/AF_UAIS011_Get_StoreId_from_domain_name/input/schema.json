@@ -1,0 +1,14 @@
+{
+  "required" : [ "storeDomain" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "storeDomain" : {
+      "title" : "storeDomain",
+      "description" : "The domain name of the store the user is currently on. This will be used to search for a Store record if one is needed.\nThe domain name should be sanitised without protocol or prefix elements, eg 'example.com' not 'http://example.com/'",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

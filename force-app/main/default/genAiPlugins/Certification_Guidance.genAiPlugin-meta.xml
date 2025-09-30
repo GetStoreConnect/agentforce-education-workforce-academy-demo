@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Assist with understanding certifications or licensing paths offered by Workforce Academy for a chosen career, including exploring options, selecting one, or getting more details. Triggers on phrases like &quot;explore certifications for [career]&quot;, &quot;what certifications do you offer for [career]?&quot;, &quot;how to get certified in [field] through Workforce Academy?&quot;, &quot;certification options after choosing [career]&quot;, &quot;next steps for licensing with your academy&quot;, &quot;which certification interests you&quot;, or &quot;tell me about certifications available&quot;.</description>
+    <developerName>Certification_Guidance</developerName>
+    <genAiFunctions>
+        <functionName>GetCertificationsForCareerByCareerId</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GetCertification</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SetVariables</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>After selection, confirm with &quot;Great choice! You&apos;ve selected [certification]&quot; and prompt progression: &quot;Would you like to view the required modules to get started on enrolment and booking classes?&quot;</description>
+        <developerName>instruction_afterselec0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_afterselec0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Align to booking goal: Use enthusiastic language like &quot;These certifications will help you become certified—let&apos;s pick one and move to modules!&quot; and end with a call-to-action.</description>
+        <developerName>instruction_aligntoboo1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_aligntoboo1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Before completing any other instruction, if storeId variable is null, run SetVariables action.</description>
+        <developerName>instruction_beforecomp2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_beforecomp2</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Handle ambiguities by re-asking (e.g., &quot;Did you mean Electrical Level 1 or 2?&quot;) and always offer options to avoid dead-ends.</description>
+        <developerName>instruction_handleambi3</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_handleambi3</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If user selects (e.g., &quot;Electrical Level 1 looks good&quot;), use GetCertification with certificationName to get the record, display details from certification output, and store certification_productCategoryId; if mismatch/null, suggest list alternatives and retry with corrected name.</description>
+        <developerName>instruction_ifusersele4</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifusersele4</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Present certificationRecords as a bulleted list with names and any output details (e.g., description); ask clarifying questions like &quot;Which one stands out to you?&quot; for engagement.</description>
+        <developerName>instruction_presentcer5</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_presentcer5</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Provide concise responses with key information only, unless the user explicitly requests more details (e.g., &apos;more details,&apos; &apos;explain further,&apos; &apos;tell me more&apos;). Focus on essential points and avoid extraneous information to keep interactions efficient and user-focused.</description>
+        <developerName>instruction_providecon6</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_providecon6</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Use GetCertificationsForCareerByCareerId with careerId (as productCategoryId) to retrieve the list; if errorMessage, empty, or failure, retry the action once—if still fails, inform &quot;Having trouble loading certifications right now—let&apos;s double-check your career or try again shortly&quot; and re-prompt selection without ending.</description>
+        <developerName>instruction_usegetcert7</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_usegetcert7</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Verify career_productCategoryId is set; if null or invalid, prompt &quot;Let&apos;s confirm your career choice first—would you like to explore careers?&quot; to redirect to Career Exploration.</description>
+        <developerName>instruction_verifycare8</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_verifycare8</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Certification Guidance</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is only to list, explain, and help select certifications linked to the chosen career using GetCertificationsForCareerByCareerId and GetCertification, based strictly on action outputs (e.g., no external data like salaries or state licensing). You cannot discuss modules, courses, enrollment details, or bookings here—redirect by prompting &quot;Would you like to view the required modules for [certification] to start enrollment?&quot; to guide towards classes. You cannot proceed without a stored careerId or speculate on unavailable data—fallback to career reselection.</scope>
+</GenAiPlugin>

@@ -1,0 +1,14 @@
+{
+  "required" : [ "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "Current storeId; must be valid or action fails—set via GetStoreFromDomainName if missing.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

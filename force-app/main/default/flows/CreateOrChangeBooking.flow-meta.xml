@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Bookable_Event_Variable</name>
+        <label>Assign: Bookable Event Variable</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Bookable_Event</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assing_New_Booking_Var</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Error_Booking_Can_t_be_changed</name>
+        <label>Assign: Error Booking Can&apos;t be changed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: Sorry you can&apos;t change this booking right now, please contact Workforce Academy for more options. Either the booking date is today or you booking has been confirmed.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Error_Missing_Information</name>
+        <label>Assign: Error Missing Information</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: Please ensure all the required booking information has been included. We require a Booking Date, Booking Start Time, Booking End Time and Booking Product Location Id</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Error_No_OrderItemId</name>
+        <label>Assign: Error No OrderItemId</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error, please ensure an orderItem Id is included when calling this action, please ask the user to select a booking to update.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_New_Bookable_Event</name>
+        <label>Assign: New Bookable Event</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__Product_Bookable_Location_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OrderItem.Product_Bookable_Location__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__Created_From_Availability__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__Start_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__End_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>for_BookingEventName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__Display_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>for_BookingEventName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__Start_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Starts_At__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BookableEvent.s_c__End_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Ends_At__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_new_Bookable_Event</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Set_Error_Message</name>
+        <label>Assign: Set Error Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: An issue occurred when creating the booking. {!$Flow.FaultMessage}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assing_New_Booking_Var</name>
+        <label>Assing: New Booking Var</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>booking.s_c__Bookable_Event_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>var_BookableEvent.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>booking.s_c__Account_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Order.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>booking.s_c__Contact_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Order.s_c__Contact_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>booking.s_c__Order_Item_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>orderItemId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>booking.s_c__Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>booked</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Booking</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Decision_Can_this_booking_be_changed</name>
+        <label>Decision: Can this booking be changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Error_Booking_Can_t_be_changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Booking Cannot be changed</defaultConnectorLabel>
+        <rules>
+            <name>Booking_Can_be_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Exsisting_Booking.s_c__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>booked</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Exsisting_Booking.Start_Date__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Old_Booking</targetReference>
+            </connector>
+            <label>Booking Can be changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Is_there_a_Booking_Record_Already</name>
+        <label>Decision: Is there a Booking Record Already</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Bookable_Event</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>New Booking</defaultConnectorLabel>
+        <rules>
+            <name>Required_Fields_Missing</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_OrderItem.Product_Bookable_Location__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_OrderItem.Booking_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_OrderItem.Booking_Starts_At__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_OrderItem.Booking_Ends_At__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Error_Missing_Information</targetReference>
+            </connector>
+            <label>Required Fields Missing</label>
+        </rules>
+        <rules>
+            <name>Booking_Record_Already_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_OrderItem.Booked_Class__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Exsisting_Booking</targetReference>
+            </connector>
+            <label>Booking Record Already - Update</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Is_there_an_OrderItemId</name>
+        <label>Decision: Is there an OrderItemId</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Error_No_OrderItemId</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No OrderItemId</defaultConnectorLabel>
+        <rules>
+            <name>There_is_an_OrderItemId</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>orderItemId</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_OrderItem</targetReference>
+            </connector>
+            <label>There is an OrderItemId</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Was_a_Bookable_Event_Found</name>
+        <label>Decision: Was a Bookable Event Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_New_Bookable_Event</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Create new Bookable Event</defaultConnectorLabel>
+        <rules>
+            <name>Bookable_Event_already_exsists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Bookable_Event</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Bookable_Event_Variable</targetReference>
+            </connector>
+            <label>Bookable Event already exsists</label>
+        </rules>
+    </decisions>
+    <description>This action creates or updates a booking record based on changes to the related OrderItem.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>for_BookingEventName</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!Get_OrderItem.Booking_Date__c}) &amp; &apos; - &apos; &amp; 
+{!Get_OrderItem.Product2.s_c__Display_Name__c} &amp; &apos; at &apos; &amp;
+CASE(
+    HOUR({!Get_OrderItem.Booking_Starts_At__c}),
+    0, &apos;12:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    1, &apos;1:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    2, &apos;2:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    3, &apos;3:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    4, &apos;4:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    5, &apos;5:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    6, &apos;6:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    7, &apos;7:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    8, &apos;8:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    9, &apos;9:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    10, &apos;10:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    11, &apos;11:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    12, &apos;12:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    13, &apos;1:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    14, &apos;2:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    15, &apos;3:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    16, &apos;4:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    17, &apos;5:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    18, &apos;6:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    19, &apos;7:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    20, &apos;8:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    21, &apos;9:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    22, &apos;10:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    23, &apos;11:&apos; &amp; LPAD(TEXT(MINUTE({!Get_OrderItem.Booking_Starts_At__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    &apos;&apos;
+)</expression>
+    </formulas>
+    <interviewLabel>AF - UAIS008 - Manage Booking {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AF - UAIS008 - Manage Booking</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Booking</name>
+        <label>Create Booking</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Booking_Attendee</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Assign_Set_Error_Message</targetReference>
+        </faultConnector>
+        <inputReference>booking</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Booking_Attendee</name>
+        <label>Create Booking Attendee</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Order_Item</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>s_c__Booking_Id__c</field>
+            <value>
+                <elementReference>booking.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>s_c__Contact_Id__c</field>
+            <value>
+                <elementReference>Get_Order.s_c__Contact_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>s_c__Email__c</field>
+            <value>
+                <elementReference>Get_Order.s_c__Contact_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>s_c__First_Name__c</field>
+            <value>
+                <elementReference>Get_Order.s_c__Contact_Id__r.FirstName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>s_c__Last_Name__c</field>
+            <value>
+                <elementReference>Get_Order.s_c__Contact_Id__r.LastName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>s_c__Phone__c</field>
+            <value>
+                <elementReference>Get_Order.s_c__Contact_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>s_c__Attendee__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_new_Bookable_Event</name>
+        <label>Create new Bookable Event</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assing_New_Booking_Var</targetReference>
+        </connector>
+        <inputReference>var_BookableEvent</inputReference>
+    </recordCreates>
+    <recordDeletes>
+        <name>Delete_Old_Booking</name>
+        <label>Delete Old Booking</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Bookable_Event</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Exsisting_Booking.Id</elementReference>
+            </value>
+        </filters>
+        <object>s_c__Booking__c</object>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_Bookable_Event</name>
+        <label>Get Bookable Event</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Was_a_Bookable_Event_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>s_c__Product_Bookable_Location_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.Product_Bookable_Location__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__Start_Date__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Date__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__End_Date__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Date__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__Start_Time__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Starts_At__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__End_Time__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booking_Ends_At__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>s_c__Bookable_Event__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Exsisting_Booking</name>
+        <label>Get Exsisting Booking</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Can_this_booking_be_changed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.Booked_Class__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>s_c__Booking__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>s_c__Status__c</queriedFields>
+        <queriedFields>Start_Date__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Order</name>
+        <label>Get Order</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Is_there_a_Booking_Record_Already</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_OrderItem.OrderId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Order</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_OrderItem</name>
+        <label>Get OrderItem</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Order</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>orderItemId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OrderItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Order_Item</name>
+        <label>Update Order Item</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>orderItemId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Booked_Class__c</field>
+            <value>
+                <elementReference>booking.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OrderItem</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Is_there_an_OrderItemId</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>This is the created or updated booking record</description>
+        <name>booking</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>s_c__Booking__c</objectType>
+    </variables>
+    <variables>
+        <description>The error or system message returned by the action, follow the instructions and provide the user a generalised response without PII.</description>
+        <name>errorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>The orderItem Id with the related booking being updated.</description>
+        <name>orderItemId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_BookableEvent</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>s_c__Bookable_Event__c</objectType>
+    </variables>
+</Flow>

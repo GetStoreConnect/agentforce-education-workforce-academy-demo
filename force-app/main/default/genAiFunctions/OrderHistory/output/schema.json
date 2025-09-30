@@ -1,0 +1,19 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "orders" : {
+      "title" : "orders",
+      "description" : "List<object> (LWC-rendered), \"List of orders; display as table with dates/items.\"</object>",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "c__ordersResponse"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

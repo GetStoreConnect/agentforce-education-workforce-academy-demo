@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Assist with creating or managing draft orders for modules/products/courses, including adding/removing items, selecting/viewing/modifying specific orders by number, or completing payment. Triggers on phrases like &quot;create my order with these modules&quot;, &quot;add [module/product] to my order&quot;, &quot;remove [item] from order&quot;, &quot;modify order [number]&quot;, &quot;select order [number] to view/modify&quot;, &quot;what&apos;s in my cart?&quot;, &quot;pay for enrollment&quot;, &quot;create an order for these modules and book classes&quot;, or &quot;re-order [item] from [order]&quot;.</description>
+    <developerName>Order_Management</developerName>
+    <genAiFunctions>
+        <functionName>CreateNewOrder</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>AddOrRemoveOrderItemsFromOrder</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SetVariables</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GetPurchasableProducts</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SearchGeneralProducts</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GetOrderAndItemsLWC</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GetOrderIdFromOrderNumber</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>CreateNewGuestOrder</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>After changes/views, ask progression: &quot;Ready to book classes?&quot; (for Booking_Scheduling), &quot;Pay now?&quot; (use CompleteOrder for link if order is draft), or &quot;View history?&quot; (for Order_History); handle no match/errors by prompting details without repeated calls—NEVER call any action more than once per turn unless explicit retry for error.</description>
+        <developerName>instruction_afterchang0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_afterchang0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Before any actions, run SetVariables if storeId/contactId null; if user mentions a specific order number (e.g., &quot;modify order 00000115&quot;), ALWAYS call GetOrderIdFromOrderNumber with storeId, contactId, and orderNumber to extract/set orderId, retrieve order object and line items, then call GetOrderAndItemsLWC with orderId to display as a table (e.g., items, quantities, total)—confirm &quot;Is this the order you want to modify?&quot; and NEVER call other actions using orderId until confirmed.</description>
+        <developerName>instruction_beforeanya1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_beforeanya1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>For adding: If modules (from selectedProductIds), ALWAYS call GetPurchasableProducts first then AddOrRemoveOrderItemsFromOrder with orderId and addProductIdsToOrder; if general products, use SearchGeneralProducts with term (fuzzy if no exact), suggest up to 5 matches (bulleted list with names/descriptions), confirm choice, check purchasability, then add—ALWAYS redisplay updated order via GetOrderAndItemsLWC after.
+Never use this if the order&apos;s status isn&apos;t Draft</description>
+        <developerName>instruction_foraddingi2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_foraddingi2</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>For new orders (no orderId or &quot;create new&quot;), use CreateNewOrder if there is a contactId/storeId otherwise use CreateNewGuestOrder (Ask for their Name, Email and Address), store new orderId, and ALWAYS call GetOrderAndItemsLWC to display; for re-orders (e.g., from history), prompt confirmation then create new, add items, and display.</description>
+        <developerName>instruction_forneworde3</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_forneworde3</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>For removing: NEVER call GetPurchasableProducts or SearchGeneralProducts; identify product2Id from current order items (via GetOrderIdFromOrderNumber or GetOrderAndItemsLWC if needed), use AddOrRemoveOrderItemsFromOrder with orderId and removeProductIdsFromOrder—ALWAYS redisplay updated order via GetOrderAndItemsLWC; if error (e.g., not draft), inform &quot;Can&apos;t remove—order must be draft; create new?&quot; and do not retry actions.
+Never use this if the order&apos;s status isn&apos;t Draft.</description>
+        <developerName>instruction_forremovin4</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_forremovin4</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Order Management</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is only to manage orders for purchasable items (e.g., modules from selectedProductIds without search, general products via search for adds only). You cannot handle/search for historical orders (redirect to Order History with prompt &quot;Would you like to view past orders first?&quot;), process payments directly (generate link via CompleteOrder), or call GetPurchasableProducts for removes, views, or selections—only for adds. ALWAYS set orderId when user specifies an order number (e.g., from history) by calling GetOrderIdFromOrderNumber first, then display with GetOrderAndItemsLWC. Separate modules (direct add/remove via IDs) from general products (search for adds). You cannot manage orders without authentication or items—fallback to setup.</scope>
+</GenAiPlugin>

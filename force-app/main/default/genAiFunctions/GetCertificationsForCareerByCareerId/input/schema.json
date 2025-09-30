@@ -1,0 +1,14 @@
+{
+  "required" : [ "productCategoryId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "productCategoryId" : {
+      "title" : "productCategoryId",
+      "description" : "The career_productCategoryId of the career chosen by the user, this will then be used to get the certification categories for the career category. The user should select or choose a career. This is only ever a 15-18 character salesforce record Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,47 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "completedModules" : {
+      "title" : "completedModules",
+      "description" : "A list of products that the user has already purchased for this certification. They do not need to be purchased again, however, may be if the user wished to re-take the module.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "Product2"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "The error or system message from the action. Follow it's instructions and provide the user feedback without disclosing PII.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "productRecords" : {
+      "title" : "productRecords",
+      "description" : "The list of required modules for this certification. Show these and their details to the user so they are aware of the modules required to complete this certification.\nProvide concise responses with key information only, unless the user explicitly requests more details.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "Product2"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

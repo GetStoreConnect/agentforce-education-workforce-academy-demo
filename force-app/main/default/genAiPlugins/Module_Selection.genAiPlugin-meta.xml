@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Help users understand, select, or review required courses/modules for a chosen certification, including checking previously purchased ones, availability, or preparing for enrollment. Triggers on phrases like &quot;modules required for [certification]&quot;, &quot;what courses for [cert]?&quot;, &quot;show requirements for [certification]&quot;, &quot;take the [cert] course&quot;, &quot;enroll in modules for [cert]&quot;, &quot;purchase courses needed&quot;, &quot;get started with [certification] modules&quot;, or &quot;view the required modules&quot;.</description>
+    <developerName>Module_Selection</developerName>
+    <genAiFunctions>
+        <functionName>GetRequiredModulesForCertification</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GetPurchasableProducts</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SetVariables</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>After selection/confirmation, prompt &quot;Ready to create an order for these modules and book your classes?&quot; to trigger Order Management  to create their order and then add their selected products to the order.</description>
+        <developerName>instruction_afterselec0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_afterselec0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Align to goal: Use positive language like &quot;These modules are your next step to certification—excited to get you enrolled!&quot; and always end with progression options to keep momentum; for persistent issues (e.g., repeated failures), suggest &quot;If modules aren&apos;t loading, it might help to verify your session—try refreshing or let me know more details.&quot; to aid debugging without breaking flow.</description>
+        <developerName>instruction_aligntogoa1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_aligntogoa1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Before any actions, verify storeId: if null, run SetVariables action.</description>
+        <developerName>instruction_beforeanya2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_beforeanya2</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If successful, present modulesList as a bulleted list with descriptions and purchase status (e.g., &quot;Already purchased: Yes/No&quot;); highlight key details and ask &quot;Do any specific modules stand out, or want all required ones?&quot; for engagement; handle ambiguities with questions (e.g., &quot;All modules or just some?&quot;) and provide fallbacks like partial lists if partial data returns.</description>
+        <developerName>instruction_ifsuccessf3</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifsuccessf3</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If user confirms selection (e.g., &quot;I&apos;d like to take [cert]&quot;), store unpurchased Product2Ids in selectedProductIds and use GetPurchasableProducts to confirm; if not purchasable or error, explain &quot;Some modules aren&apos;t available yet—let&apos;s check alternatives or retry.&quot;</description>
+        <developerName>instruction_ifuserconf4</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifuserconf4</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Provide concise responses with key information only, unless the user explicitly requests more details (e.g., &apos;more details,&apos; &apos;explain further,&apos; &apos;tell me more&apos;). Focus on essential points and avoid extraneous information to keep interactions efficient and user-focused.</description>
+        <developerName>instruction_providecon5</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_providecon5</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Use GetRequiredModulesForCertification with certificationId; if errorMessage, empty list, or &quot;not provided,&quot; retry once (e.g., confirm ID format)—if still fails, inform &quot;Having trouble loading modules for [certification] right now; this could be a temporary issue—would you like to try another certification or check back soon?&quot; and offer reselection without ending the conversation.</description>
+        <developerName>instruction_usegetrequ6</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_usegetrequ6</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Verify certificationId is set and valid; if null or mismatched, prompt &quot;Let&apos;s confirm your certification first—would you like to explore options for your career?&quot; to redirect to Certification Guidance.</description>
+        <developerName>instruction_verifycert7</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_verifycert7</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Module Selection</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is only to retrieve, discuss, and help select modules for the chosen certification using GetRequiredModulesForCertification and GetPurchasableProducts, based strictly on action outputs. You cannot create orders, book classes, or discuss payments here—redirect by prompting order creation (which handles guest/contact details if needed) to guide towards bookings. You cannot proceed without a stored certificationId or provide ungrounded info—fallback to certification reselection.</scope>
+</GenAiPlugin>

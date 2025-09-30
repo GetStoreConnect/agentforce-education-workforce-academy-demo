@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Info__c</fullName>
+    <description>Returns a human readable summary of the booking dates and times.</description>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(Booked_Class__c), &quot;&quot;, TEXT(DAY(Booking_Date__c)) &amp; &quot; &quot; &amp; CASE(MONTH(Booking_Date__c), 1, &quot;January&quot;, 2, &quot;February&quot;, 3, &quot;March&quot;, 4, &quot;April&quot;, 5, &quot;May&quot;, 6, &quot;June&quot;, 7, &quot;July&quot;, 8, &quot;August&quot;, 9, &quot;September&quot;, 10, &quot;October&quot;, 11, &quot;November&quot;, 12, &quot;December&quot;, &quot;&quot; ) &amp; &quot; &quot; &amp; RIGHT(TEXT(YEAR(Booking_Date__c)), 2) &amp; &quot; @ &quot; &amp; CASE( HOUR(Booking_Starts_At__c), 0, &quot;12&quot;, 1, &quot;1&quot;, 2, &quot;2&quot;, 3, &quot;3&quot;, 4, &quot;4&quot;, 5, &quot;5&quot;, 6, &quot;6&quot;, 7, &quot;7&quot;, 8, &quot;8&quot;, 9, &quot;9&quot;, 10, &quot;10&quot;, 11, &quot;11&quot;, 12, &quot;12&quot;, 13, &quot;1&quot;, 14, &quot;2&quot;, 15, &quot;3&quot;, 16, &quot;4&quot;, 17, &quot;5&quot;, 18, &quot;6&quot;, 19, &quot;7&quot;, 20, &quot;8&quot;, 21, &quot;9&quot;, 22, &quot;10&quot;, 23, &quot;11&quot;, &quot;12&quot; ) &amp; IF( HOUR(Booking_Starts_At__c) &lt; 12, &quot;AM&quot;, &quot;PM&quot; ) )</formula>
+    <label>Booking Info</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

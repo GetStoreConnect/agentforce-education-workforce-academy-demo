@@ -1,0 +1,14 @@
+{
+  "required" : [ "orderId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "orderId" : {
+      "title" : "orderId",
+      "description" : "The order Id of the order the user wishes to complete.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

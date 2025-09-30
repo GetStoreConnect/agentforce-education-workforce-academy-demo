@@ -1,0 +1,86 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "availableBookingSlots" : {
+      "title" : "availableBookingSlots",
+      "description" : "A list of all available booking slots based on the input parameters. If no bookableLocationId was included, will include all locations in the country or state for that product. Display these by location and then date from soonest to latest.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "Booking_Availability__c"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "bookableLocation" : {
+      "title" : "bookableLocation",
+      "description" : "The single location record the available time slots were generated for. This will be populated if there was a bookableLocationId included.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "s_c__Bookable_Location__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "bookableLocationId" : {
+      "title" : "bookableLocationId",
+      "description" : "The bookableLocationId for the Bookable Location closest to or chosen by the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "bookableLocations" : {
+      "title" : "bookableLocations",
+      "description" : "If multiple booking locations were found, this contains a record list of locations that were searched for time slots.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "s_c__Bookable_Location__c"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "The error message or system message about the action result. Will give a message for the agent with follow up instructions. Display a generalised error to the user without any PII.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "fromDate" : {
+      "title" : "fromDate",
+      "description" : "The first date booking availabilities are/were searched from. It should always be a date in the future and should always be before or equal to the untilDate.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "untilDate" : {
+      "title" : "untilDate",
+      "description" : "The latest date booking availabilities are/were searched from. It should always be a date in the future and should always be after or equal to the fromDate.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

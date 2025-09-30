@@ -1,0 +1,31 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "bookingLocations" : {
+      "title" : "bookingLocations",
+      "description" : "A list of booking locations that were found with based on the input parameters. May be 1 or more records. Use these to provide more information to the user and ask if they would like to select a specific location to set.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "s_c__Bookable_Location__c"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "The error or system message returned by the action. Follow the instructions and display a generalised message to the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

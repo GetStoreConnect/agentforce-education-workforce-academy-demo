@@ -1,0 +1,98 @@
+{
+  "required" : [ "messagingSessionId", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "action_SendResetPasswordLink" : {
+      "title" : "action_SendResetPasswordLink",
+      "description" : "If true, will send a reset password link to the current contact's email address.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "The contactId of the current messaging user. If this is blank, a new contact record will be created.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "messagingSessionId" : {
+      "title" : "messagingSessionId",
+      "description" : "The messaging sessionId of the current messaging session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "new_Email" : {
+      "title" : "new_Email",
+      "description" : "The email address to use when updating or creating the contact. Ensure it follow correct email formatting. If no update is desired, this variable is empty.\nThis is required when creating a contact.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_FirstName" : {
+      "title" : "new_FirstName",
+      "description" : "The First Name to use when updating or creating the contact. If no update is desired, this variable is empty.\nThis is required when creating a contact.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_LastName" : {
+      "title" : "new_LastName",
+      "description" : "The Last Name to use when updating or creating the contact. If no update is desired, this variable is empty.\nThis is required when creating a contact.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_MailingCity" : {
+      "title" : "new_MailingCity",
+      "description" : "The Mailing/Shipping City to use when updating or creating the contact. If no update is desired, this variable is empty.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_MailingCountry" : {
+      "title" : "new_MailingCountry",
+      "description" : "The Mailing/Shipping Country to use when updating or creating the contact. Ensure it is a real country, suggest alternative real values if it's misspelt or fake. If no update is desired, this variable is empty.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_MailingPostCode" : {
+      "title" : "new_MailingPostCode",
+      "description" : "The Mailing/Shipping Zip/Postal Code to use when updating or creating the contact. If no update is desired, this variable is empty.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_MailingState" : {
+      "title" : "new_MailingState",
+      "description" : "The Mailing/Shipping State or Province to use when updating or creating the contact. Ensure it is a real State or Province for the country, suggest alternative real values if it's misspelt or fake. If no update is desired, this variable is empty.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_MailingStreet" : {
+      "title" : "new_MailingStreet",
+      "description" : "The Mailing/Shipping Street to use when updating or creating the contact. If no update is desired, this variable is empty.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "new_Phone" : {
+      "title" : "new_Phone",
+      "description" : "The phone or mobile to use when updating or creating the contact. Ensure it follows a real phone format. If no update is desired, this variable is empty.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId of the related store, typically set by the Store__c field on the Messaging Session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

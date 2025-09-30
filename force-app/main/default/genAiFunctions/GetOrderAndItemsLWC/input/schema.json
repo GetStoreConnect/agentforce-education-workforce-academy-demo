@@ -1,0 +1,14 @@
+{
+  "required" : [ "orderId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "orderId" : {
+      "title" : "orderId",
+      "description" : "If blank, get latest draft.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

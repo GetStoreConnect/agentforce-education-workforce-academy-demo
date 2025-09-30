@@ -1,0 +1,19 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "output" : {
+      "title" : "output",
+      "description" : "Data is a list of OrderItems and their corresponding time-slot availabilities to be used to book. \nFor each BookingAvailability, Show Order Item Name then render as a table: [dateValue (format as Jul 1, 2025), startTime - endTime ( include locationTimezone), bookableLocationName], appending \"And many more...\" if moreSlotsFound is true for the BookingAvailability.\nYou MUST show the correct date, time and location for each timeSlots.\nIf moreSlotsFound is true for any BookingAvailability, inform user \"Many slots found—suggest selecting a specific location to narrow?\" and prompt for a Bookable Location, and/or choose a smaller time range or as a fallback ask the user to only book in a few orderItems at a time.\nIf empty, suggest extending dates or alternative locations.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "@apexClassType/c__BA_IM_GetOrderItemTimeSlots$BookingAvailability"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

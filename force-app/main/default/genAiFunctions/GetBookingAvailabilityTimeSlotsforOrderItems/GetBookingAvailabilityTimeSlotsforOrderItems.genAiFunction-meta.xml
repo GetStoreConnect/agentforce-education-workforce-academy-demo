@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Retrieves booking availability time slots for the products associated with the given OrderItem IDs within the specified date range. Optionally, filter by a specific product bookable location. Use this action when the user needs to view or select available time slots for booking products in their order, such as scheduling events or appointments. This action processes multiple OrderItems, computing available slots based on their linked Product2 records. Ensure the products are confirmed bookable before invoking this action. Returns a list of BookingAvailability objects, each containing the OrderItem and its corresponding time slots that are available to be booked.</description>
+    <invocationTarget>BA_IM_GetOrderItemTimeSlots</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <masterLabel>AF - UAIS006 - Get Booking Availability Time Slots for Order Items</masterLabel>
+    <progressIndicatorMessage>Getting time slots...</progressIndicatorMessage>
+</GenAiFunction>

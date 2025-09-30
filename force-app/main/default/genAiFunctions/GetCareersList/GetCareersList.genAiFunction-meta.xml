@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Use when user asks for careers; display careers list immediately for prompting selection or details. If error, retry or redirect.
+Retrieves a list of available career product categories from the store. Use at the start of exploration or when suggesting options. Edge case: If errorMessage, handle generally; if empty list, inform no careers available</description>
+    <invocationTarget>AF_UAIS001_Get_Careers</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>storeId</label>
+        <name>input_storeId</name>
+        <parameterName>storeId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <masterLabel>AF - UAIS001 - Get Careers</masterLabel>
+    <progressIndicatorMessage>Getting careers...</progressIndicatorMessage>
+</GenAiFunction>

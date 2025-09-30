@@ -1,0 +1,39 @@
+{
+  "required" : [ "endDate", "orderItemIds", "startDate" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "bookableLocationId" : {
+      "title" : "bookableLocationId",
+      "description" : "The 18-character alphanumeric ID of the specific Bookable Location to filter availabilities. Omit this input entirely if no specific location is selected by the user. If provided, it must be a valid Salesforce ID starts with 'a0D'. If not provided, availabilities for all locations will be returned.",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "endDate" : {
+      "title" : "endDate",
+      "description" : "The end date for searching slots, in YYYY-MM-DD format (e.g., '2025-08-19'). Must be a future date and after or equal to fromDate; extend range if no slots found, but keep reasonable to avoid too many results.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "orderItemIds" : {
+      "title" : "orderItemIds",
+      "description" : "List of OrderItem IDs for which to fetch booking availabilities. Each string must begin with '802' and be a valid Salesforce Id.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordIdType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "startDate" : {
+      "title" : "startDate",
+      "description" : "The start date for searching slots, in YYYY-MM-DD format (e.g., '2025-07-19'). Must be a future date and before or equal to untilDate; if past or invalid, action may return empty—prompt user for future dates.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Assist with viewing or retrieving past order history, including details on previous purchases or transitioning to re-orders/modifications. Triggers on phrases like &quot;my order history&quot;, &quot;view my previous orders&quot;, &quot;show past purchases&quot;, &quot;what did I order before?&quot;, &quot;re-order from history&quot;, &quot;historical orders&quot;, &quot;show my last [number] orders&quot;, or &quot;view order [number] from past&quot;.</description>
+    <developerName>Order_History</developerName>
+    <genAiFunctions>
+        <functionName>SetVariables</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>OrderHistory</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GetOrderIdFromOrderNumber</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>Run SetVariables if storeId/contactId null; then use OrderHistory with contactId/storeId to retrieve and ALWAYS display list via LWC renderer as a table (e.g., order numbers, dates, statuses, items, totals)—limit to requested number (e.g., last 2) if specified.</description>
+        <developerName>instruction_runsetvari0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_runsetvari0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If user selects a specific order (e.g., &quot;view order 00000115&quot;), use GetOrderIdFromOrderNumber with storeId, contactId, orderNumber to get/set orderId, retrieve details, and highlight from list; for re-order/modify, prompt &quot;To re-order these items, would you like to create a new draft?&quot; and transition to Order Management (pass product2Ids if applicable).</description>
+        <developerName>instruction_ifusersele1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifusersele1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Handle no history by informing &quot;No past orders found—would you like to create one?&quot; (redirect to Order Management); for errors, retry once or escalate politely without loops.</description>
+        <developerName>instruction_handlenohi2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_handlenohi2</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Order History</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is only to retrieve and display historical orders using OrderHistory action with LWC renderer. You cannot create new orders or modify existing ones here (redirect to Order Management with prompt &quot;Would you like to modify or re-order from this?&quot;). You cannot access history without storeId and contactId—prompt setup if missing. For re-orders, list items and transition.</scope>
+</GenAiPlugin>

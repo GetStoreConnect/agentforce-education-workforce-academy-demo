@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Retrieves past orders for contactId/storeId; use to display history via LWC. Edge case: No history—inform &quot;No past orders—ready to create one?&quot;</description>
+    <invocationTarget>AF_IM_GetOrders</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>contactId</label>
+        <name>input_contactId</name>
+        <parameterName>contactId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>storeId</label>
+        <name>input_storeId</name>
+        <parameterName>storeId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <masterLabel>AF - UAIS006 - Get Order History</masterLabel>
+    <progressIndicatorMessage>Getting Orders...</progressIndicatorMessage>
+</GenAiFunction>

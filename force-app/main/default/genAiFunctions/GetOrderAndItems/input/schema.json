@@ -1,0 +1,28 @@
+{
+  "required" : [ "contactId", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "The contactId of the current user. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "orderId" : {
+      "title" : "orderId",
+      "description" : "Optional the orderId of the order record to get details for. If blank, the action will return the most recent draft order for the user. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId to use for the current order. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

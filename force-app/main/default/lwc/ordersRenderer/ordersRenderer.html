@@ -1,0 +1,148 @@
+<template>
+  <lightning-card title="Your Orders" icon-name="standard:orders">
+    <template if:true={hasOrders}>
+      <div class="slds-p-around_medium">
+        <template if:true={isMultiple}>
+          <lightning-accordion allow-multiple-sections-open="false" active-section-name={activeSections}>
+            <template for:each={computedValue} for:item="order">
+              <lightning-accordion-section key={order.orderId} name={order.orderId} label={order.summaryLabel}>
+                <div class="slds-p-around_small">
+                  <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+                    <div>
+                      <div class="slds-grid slds-align-start slds-m-bottom_x-small">
+                        <lightning-icon icon-name="standard:orders" size="small" class="slds-m-right_small"></lightning-icon>
+                        <h3 class="slds-text-heading_medium slds-truncate">Order {order.orderNumber}</h3>
+                      </div>
+                      <div class="slds-grid slds-align-start slds-text-body_regular slds-m-bottom_x-small">
+                        <lightning-icon icon-name="utility:event" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                        <p>Date: {order.orderDate}</p>
+                      </div>
+                      <div class="slds-grid slds-align-start slds-m-bottom_x-small">
+                        <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                        <p>Status: {order.status}</p>
+                      </div>
+                      <div class="slds-grid slds-align-start slds-m-bottom_x-small">
+                        <lightning-icon icon-name="utility:cart" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                        <p>Number of Items: {order.numItems}</p>
+                      </div>
+                      <div class="slds-grid slds-align-start">
+                        <lightning-icon icon-name="utility:money" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                        <p>Total Amount: ${order.totalAmount}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <lightning-button variant="brand" label="View Order" onclick={handleViewOrder} data-url={order.viewLink} class="slds-m-top_small"></lightning-button>
+                </div>
+
+                <div class="slds-p-left_medium">
+                  <h4 class="slds-text-title_bold slds-m-bottom_small slds-m-top_small">
+                    <lightning-icon icon-name="standard:product" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                    Order Items
+                  </h4>
+
+                  <template for:each={order.items} for:item="item">
+                    <div key={item.productName} class="slds-box slds-box_xx-small slds-m-bottom_small slds-theme_shade">
+                      <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2">
+                          <p>
+                            <strong>Product Name:</strong>
+                            <a href={item.productLink} target="_blank">{item.productName}</a>
+                          </p>
+                          <p>
+                            <lightning-icon icon-name="utility:quantity" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Quantity:</strong> {item.quantity}
+                          </p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                          <p>
+                            <lightning-icon icon-name="utility:money" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                            <strong>Line Amount:</strong> ${item.lineAmount}
+                          </p>
+                          <template if:true={item.bookingInfo}>
+                            <p>
+                              <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                              <strong>Booking Info:</strong> {item.bookingInfo}
+                            </p>
+                          </template>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </lightning-accordion-section>
+            </template>
+          </lightning-accordion>
+        </template>
+
+        <template if:true={isSingle}>
+          <div class="slds-box slds-box_x-small slds-m-bottom_medium">
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+              <div>
+                <div class="slds-grid slds-align-start slds-m-bottom_x-small">
+                  <lightning-icon icon-name="standard:orders" size="small" class="slds-m-right_small"></lightning-icon>
+                  <h3 class="slds-text-heading_medium slds-truncate">Order {singleOrder.orderNumber}</h3>
+                </div>
+                <div class="slds-grid slds-align-start slds-text-body_regular slds-m-bottom_x-small">
+                  <lightning-icon icon-name="utility:event" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                  <p>Date: {singleOrder.orderDate}</p>
+                </div>
+                <div class="slds-grid slds-align-start slds-m-bottom_x-small">
+                  <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                  <p>Status: {singleOrder.status}</p>
+                </div>
+                <div class="slds-grid slds-align-start slds-m-bottom_x-small">
+                  <lightning-icon icon-name="utility:cart" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                  <p>Number of Items: {singleOrder.numItems}</p>
+                </div>
+                <div class="slds-grid slds-align-start">
+                  <lightning-icon icon-name="utility:money" size="xx-small" class="slds-m-right_x-small"></lightning-icon>
+                  <p>Total Amount: ${singleOrder.totalAmount}</p>
+                </div>
+              </div>
+            </div>
+            <lightning-button variant="brand" label="View Order" onclick={handleViewOrder} data-url={singleOrder.viewLink} class="slds-m-top_small"></lightning-button>
+
+            <div class="slds-p-left_medium slds-m-top_medium">
+              <h4 class="slds-text-title_bold slds-m-bottom_small">
+                <lightning-icon icon-name="standard:product" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                Order Items
+              </h4>
+
+              <template for:each={singleOrder.items} for:item="item">
+                <div key={item.productName} class="slds-box slds-box_xx-small slds-m-bottom_small slds-theme_shade">
+                  <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2">
+                      <p>
+                        <strong>Product Name:</strong>
+                        <a href={item.productLink} target="_blank">{item.productName}</a>
+                      </p>
+                      <p>
+                        <lightning-icon icon-name="utility:quantity" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                        <strong>Quantity:</strong> {item.quantity}
+                      </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                      <p>
+                        <lightning-icon icon-name="utility:money" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                        <strong>Line Amount:</strong> ${item.lineAmount}
+                      </p>
+                      <template if:true={item.bookingInfo}>
+                        <p>
+                          <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                          <strong>Booking Info:</strong> {item.bookingInfo}
+                        </p>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    <template if:false={hasOrders}>
+      <p class="slds-text-body_regular slds-text-align_center slds-p-around_medium">No orders found.</p>
+    </template>
+  </lightning-card>
+</template>

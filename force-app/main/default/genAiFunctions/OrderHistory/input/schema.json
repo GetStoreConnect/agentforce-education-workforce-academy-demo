@@ -1,0 +1,21 @@
+{
+  "required" : [ "contactId", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "The 18 character Salesforce Contact Record Id of the current user. Should be the contactId variable.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The 18 character s_c__Store__c record Id. Set by the storeId variable.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

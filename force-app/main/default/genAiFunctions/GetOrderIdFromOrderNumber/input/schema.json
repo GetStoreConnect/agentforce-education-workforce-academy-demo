@@ -1,0 +1,28 @@
+{
+  "required" : [ "contactId", "orderId", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "The 18-char contactId of the current user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "orderId" : {
+      "title" : "orderId",
+      "description" : "The Order Number or orderId of the order to search for.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The 18-char storeId to use for the current order.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

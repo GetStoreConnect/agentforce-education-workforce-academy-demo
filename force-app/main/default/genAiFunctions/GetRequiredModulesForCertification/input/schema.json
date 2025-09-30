@@ -1,0 +1,28 @@
+{
+  "required" : [ "productCategoryId", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "Optional, if included, the 'completedModules' product list will include a list of modules completed by this contact that do not need to be 're-purchased'. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "productCategoryId" : {
+      "title" : "productCategoryId",
+      "description" : "The certification_ productCategoryIdInstructions of the chosen certification product category. This will never be a career type product category record.\nThis is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId of the current store the user is in. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

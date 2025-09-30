@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Error: is missing, please ensure it&apos;s included before calling this action.</description>
+        <name>Assign_Date_Missing</name>
+        <label>Assign: Date Missing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: bookingDate is missing, please ensure it&apos;s included before calling this action.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Error: is missing, please ensure it&apos;s included before calling this action.</description>
+        <name>Assign_End_Missing</name>
+        <label>Assign: End Missing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: endTime is missing, please ensure it&apos;s included before calling this action.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Error: is missing, please ensure it&apos;s included before calling this action.</description>
+        <name>Assign_OrderId_Missing</name>
+        <label>Assign: OrderId Missing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: OrderItemId is missing, please ensure it&apos;s included before calling this action.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Error: is missing, please ensure it&apos;s included before calling this action.</description>
+        <name>Assign_Product_Bookable_LocationId_Missing</name>
+        <label>Assign: Product Bookable LocationId Missing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: productBookableLocationId is missing, please ensure it&apos;s included before calling this action.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Error: is missing, please ensure it&apos;s included before calling this action.</description>
+        <name>Assign_Start_Missing</name>
+        <label>Assign: Start Missing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: startTime is missing, please ensure it&apos;s included before calling this action.</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Error: We were unable to save your booking time.</description>
+        <name>Assign_Update_Item_Error</name>
+        <label>Assign: Update Item Error</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Error: We were unable to save your booking, please choose a different time or try again. {!$Flow.FaultMessage}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Decision_Are_all_the_variables_included</name>
+        <label>Decision: Are all the variables included?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Order_Item</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>All Parameters Entered</defaultConnectorLabel>
+        <rules>
+            <name>OrderItem_Id_Missing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>orderItemId</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_OrderId_Missing</targetReference>
+            </connector>
+            <label>OrderItem Id Missing</label>
+        </rules>
+        <rules>
+            <name>Booking_Date_Missing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>bookingDate</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Date_Missing</targetReference>
+            </connector>
+            <label>Booking Date Missing</label>
+        </rules>
+        <rules>
+            <name>startTime_Missing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>startTime</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Start_Missing</targetReference>
+            </connector>
+            <label>startTime Missing</label>
+        </rules>
+        <rules>
+            <name>endTime_Missing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>endTime</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_End_Missing</targetReference>
+            </connector>
+            <label>endTime Missing</label>
+        </rules>
+        <rules>
+            <name>Bookable_Location_Missing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productBookableLocationId</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Product_Bookable_LocationId_Missing</targetReference>
+            </connector>
+            <label>Bookable Location Missing</label>
+        </rules>
+        <rules>
+            <name>Bookable_Location_not_Product_Bookable_Location</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productBookableLocationId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>a0D</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_OrderItem_Product</targetReference>
+            </connector>
+            <label>Bookable Location not Product Bookable Location</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Was_a_Bookable_Product_Location_FOund</name>
+        <label>Decision: Was a Bookable Product Location FOund</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Product_Bookable_LocationId_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Bookable_Producrt_Location_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productBookableLocationId</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>productBookableLocationId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Update_Order_Item</targetReference>
+            </connector>
+            <label>Bookable Producrt Location Found</label>
+        </rules>
+    </decisions>
+    <description>This action is used to save the selected timeslot details to the relevant orderItem.</description>
+    <environments>Default</environments>
+    <interviewLabel>AF {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AF - UAIS007 - Save Booking Time Slot Selection</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_OrderItem_Product</name>
+        <label>Get OrderItem Product</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Search_for_Product_Bookable_Location</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>orderItemId</elementReference>
+            </value>
+        </filters>
+        <object>OrderItem</object>
+        <outputAssignments>
+            <assignToReference>var_orderItemProductId</assignToReference>
+            <field>Product2Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>Search_for_Product_Bookable_Location</name>
+        <label>Search for Product Bookable Location</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Was_a_Bookable_Product_Location_FOund</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>s_c__Product_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>var_orderItemProductId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>s_c__Bookable_Location_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>productBookableLocationId</elementReference>
+            </value>
+        </filters>
+        <object>s_c__Product_Bookable_Location__c</object>
+        <outputAssignments>
+            <assignToReference>productBookableLocationId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Order_Item</name>
+        <label>Update Order Item</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>Assign_Update_Item_Error</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>orderItemId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Booking_Date__c</field>
+            <value>
+                <elementReference>bookingDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Booking_Ends_At__c</field>
+            <value>
+                <elementReference>endTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Booking_Starts_At__c</field>
+            <value>
+                <elementReference>startTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Create_Update_Booking__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Product_Bookable_Location__c</field>
+            <value>
+                <elementReference>productBookableLocationId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OrderItem</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Are_all_the_variables_included</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The date of the booking time slot.</description>
+        <name>bookingDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The local end time of the booking time slot.</description>
+        <name>endTime</name>
+        <dataType>Time</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The error or system message from the action, follow it&apos;s instructions and provide a response to the user without showing PII.</description>
+        <name>errorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>The OrderItem recordId to save the booking availability time slot to.</description>
+        <name>orderItemId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The product bookable location id of the chosen timeslot.</description>
+        <name>productBookableLocationId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The local start time of the booking time slot.</description>
+        <name>startTime</name>
+        <dataType>Time</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_orderItemProductId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

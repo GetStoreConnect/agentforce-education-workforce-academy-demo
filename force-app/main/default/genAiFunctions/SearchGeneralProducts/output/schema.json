@@ -1,0 +1,40 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "The system message if there was an error/issue. Follow the instructions and provide an error response to the user that doesn't contain PII.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "purchasableProducts" : {
+      "title" : "purchasableProducts",
+      "description" : "A list of product records that have been verified to be purchasable by the current store. Display these in a table list with Display Name, Product Type (Family) and a link to view the product ('https://00dfl000003pbbrea4-78590c2f.storeconnect.app/products/[s_c__Slug__c]').",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "Product2"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId of the current store the user is interactive/purchasing from.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

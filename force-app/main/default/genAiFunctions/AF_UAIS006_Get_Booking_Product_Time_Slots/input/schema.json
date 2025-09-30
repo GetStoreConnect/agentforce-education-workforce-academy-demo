@@ -1,0 +1,49 @@
+{
+  "required" : [ "fromDate", "productId", "storeId", "untilDate" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "bookableLocationId" : {
+      "title" : "bookableLocationId",
+      "description" : "The bookable location Id for the Bookable Location closest to or chosen by the user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "country" : {
+      "title" : "country",
+      "description" : "The country where the current user is located, used to find locations near to the current user. Must comply with the ISO 3166 alpha 3 standard such as 'USA\".",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "fromDate" : {
+      "title" : "fromDate",
+      "description" : "The first date booking availabilities are/were searched from. It should always be a date in the future and should always be before or equal to the untilDate. ",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "productId" : {
+      "title" : "productId",
+      "description" : "The productId of the current product to get Booking Availability Slots for.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId of the current messaging sessions store, typically set by the Store__c field on the messaging session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "untilDate" : {
+      "title" : "untilDate",
+      "description" : "The latest date booking availabilities are/were searched from. It should always be a date in the future and should always be after or equal to the fromDate.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

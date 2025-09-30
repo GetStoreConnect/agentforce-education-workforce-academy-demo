@@ -1,0 +1,77 @@
+{
+  "required" : [ "email", "firstName", "lastName", "messagingSessionId", "shippingCity", "shippingCountry", "shippingPostCode", "shippingState", "shippingStreet", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "email" : {
+      "title" : "email",
+      "description" : "The email address of the user. Must be a valid email address.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "firstName" : {
+      "title" : "firstName",
+      "description" : "The first name of the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "lastName" : {
+      "title" : "lastName",
+      "description" : "The family name of the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "messagingSessionId" : {
+      "title" : "messagingSessionId",
+      "description" : "The messagingSessionId of the current session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "shippingCity" : {
+      "title" : "shippingCity",
+      "description" : "The shipping city of the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "shippingCountry" : {
+      "title" : "shippingCountry",
+      "description" : "The shipping country for the user, must be a valid country name or country code. Please suggest a value if misspelt/invalid.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "shippingPostCode" : {
+      "title" : "shippingPostCode",
+      "description" : "The shipping postal code or zip code of the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "shippingState" : {
+      "title" : "shippingState",
+      "description" : "The shipping state of the user, must be a valid state/province for the provided country.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "shippingStreet" : {
+      "title" : "shippingStreet",
+      "description" : "The shipping street of the user.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId to use for the current order.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

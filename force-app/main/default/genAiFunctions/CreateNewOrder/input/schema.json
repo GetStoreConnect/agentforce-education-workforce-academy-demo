@@ -1,0 +1,21 @@
+{
+  "required" : [ "contactId", "storeId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "The contactId of the current user. This is an 18 character alphanumeric Id. If no contactId is set, ask the user to create a new account or to login with an existing account.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "storeId" : {
+      "title" : "storeId",
+      "description" : "The storeId to use for the current order. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

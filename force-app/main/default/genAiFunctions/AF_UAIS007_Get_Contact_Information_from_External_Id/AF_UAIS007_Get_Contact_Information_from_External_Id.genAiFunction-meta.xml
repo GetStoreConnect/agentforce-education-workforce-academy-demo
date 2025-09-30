@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This flow uses the contactId from the EndUserContactId set by the Embedded Service Deployment on the academy site and retrieves the contact record for this student. If the contactRecord is null or missing and there is an EndUserContactId, always retrieve the contact record using this action. 
+You can also use this action if you need to get updated information from the Contact Record.</description>
+    <invocationTarget>AF_UAIS007_Get_Contact_Information_from_External_Id</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>contactId</label>
+        <name>input_contactId</name>
+        <parameterName>contactId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>contactId</label>
+        <name>output_contactId</name>
+        <parameterName>contactId</parameterName>
+        <parameterType>output</parameterType>
+    </mappingAttributes>
+    <masterLabel>[OLD] AF - UAIS007 - Get Contact Information from External Id</masterLabel>
+</GenAiFunction>

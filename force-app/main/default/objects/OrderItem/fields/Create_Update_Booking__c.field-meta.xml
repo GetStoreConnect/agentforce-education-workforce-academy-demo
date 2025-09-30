@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Update_Booking__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>If true, will trigger a booking creation or update.</inlineHelpText>
+    <label>Create/Update Booking</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

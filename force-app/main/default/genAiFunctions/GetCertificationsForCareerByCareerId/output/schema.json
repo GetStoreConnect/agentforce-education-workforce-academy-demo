@@ -1,0 +1,31 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "certificationRecords" : {
+      "title" : "certificationRecords",
+      "description" : "A list of certifications available to take based on the chosen career. Ask the user to pick a specific certification to view more information or to view the required modules needed to attain/complete the chosen certification.\nProvide concise responses with key information only, unless the user explicitly requests more details.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "s_c__Product_Category__c"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "errorMessage" : {
+      "title" : "errorMessage",
+      "description" : "The error or system message from the action. Follow the instructions provided and grant the user a general response about the error message.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

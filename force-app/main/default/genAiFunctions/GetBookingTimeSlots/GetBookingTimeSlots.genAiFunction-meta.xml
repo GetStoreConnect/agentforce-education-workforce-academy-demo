@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This action retrieves booking availability time slots for a purchasable product, filtering by date range, location, or country to help users book events. Use only after confirming the product is purchasable via GetPurchasableProducts with the storeId. If bookableLocationId is provided, return slots only for that location; otherwise, use country and state to filter across locations. Edge cases include no slots available (inform user politely) or invalid dates (retry with future dates).</description>
+    <invocationTarget>AF_UAIS006_Get_Booking_Product_Time_Slots</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>bookableLocationId</label>
+        <name>input_bookableLocationId</name>
+        <parameterName>bookableLocationId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>storeId</label>
+        <name>input_storeId</name>
+        <parameterName>storeId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <masterLabel>AF - UAIS006 - Get Booking Product Time Slots</masterLabel>
+    <progressIndicatorMessage>Getting Time Slots...</progressIndicatorMessage>
+</GenAiFunction>

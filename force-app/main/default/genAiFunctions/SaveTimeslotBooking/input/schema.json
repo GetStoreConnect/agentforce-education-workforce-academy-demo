@@ -1,0 +1,42 @@
+{
+  "required" : [ "bookingDate", "endTime", "orderItemId", "productBookableLocationId", "startTime" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "bookingDate" : {
+      "title" : "bookingDate",
+      "description" : "The date of the booking time slot.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "endTime" : {
+      "title" : "endTime",
+      "description" : "The local end time of the booking time slot.",
+      "lightning:type" : "lightning__timeType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "orderItemId" : {
+      "title" : "orderItemId",
+      "description" : "The OrderItem recordId to save the booking availability time slot to.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "productBookableLocationId" : {
+      "title" : "productBookableLocationId",
+      "description" : "The product bookable location id of the chosen timeslot.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "startTime" : {
+      "title" : "startTime",
+      "description" : "The local start time of the booking time slot.",
+      "lightning:type" : "lightning__timeType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

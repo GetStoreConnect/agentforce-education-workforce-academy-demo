@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Agentforce action gets booking availability time slots for the current product which can be used to book the user in to events for a given product.
+If the user has chosen a bookableLocationId, availableBookingSlots will only be returned for that location.
+Alternatively, the agent can enter sanitised country and state to return availableBookingSlots for all locations within those locations.
+The product should always be confirmed purchasable in the current storeId before using this action.</description>
+    <invocationTarget>AF_UAIS006_Get_Booking_Product_Time_Slots</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <mappingAttributes>
+        <label>storeId</label>
+        <name>input_storeId</name>
+        <parameterName>storeId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>bookableLocationId</label>
+        <name>input_bookableLocationId</name>
+        <parameterName>bookableLocationId</parameterName>
+        <parameterType>input</parameterType>
+    </mappingAttributes>
+    <mappingAttributes>
+        <label>bookableLocationId</label>
+        <name>output_bookableLocationId</name>
+        <parameterName>bookableLocationId</parameterName>
+        <parameterType>output</parameterType>
+    </mappingAttributes>
+    <masterLabel>[OLD] AF - UAIS006 - Get Booking Product Time Slots</masterLabel>
+    <progressIndicatorMessage>Getting Availabilities...</progressIndicatorMessage>
+</GenAiFunction>

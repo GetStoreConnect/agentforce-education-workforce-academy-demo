@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Update_Name</name>
+        <label>Assign: Update Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_BE.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Update_Name.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BE.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>for_Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_BE.s_c__Display_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>for_Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assing_vars</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assing_vars</name>
+        <label>Assing: vars</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vars_BEs</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>var_BE</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Update_Name</targetReference>
+        </connector>
+    </assignments>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <environments>Default</environments>
+    <formulas>
+        <name>for_Name</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!Loop_Update_Name.s_c__Start_Date__c}) &amp; &apos; - &apos; &amp; 
+{!Loop_Update_Name.s_c__Product_Bookable_Location_Id__r.s_c__Product_Id__r.s_c__Display_Name__c} &amp; &apos; at &apos; &amp;
+CASE(
+    HOUR({!Loop_Update_Name.s_c__Start_Time__c}),
+    0, &apos;12:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    1, &apos;1:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    2, &apos;2:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    3, &apos;3:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    4, &apos;4:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    5, &apos;5:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    6, &apos;6:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    7, &apos;7:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    8, &apos;8:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    9, &apos;9:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    10, &apos;10:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    11, &apos;11:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; AM&apos;,
+    12, &apos;12:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    13, &apos;1:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    14, &apos;2:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    15, &apos;3:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    16, &apos;4:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    17, &apos;5:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    18, &apos;6:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    19, &apos;7:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    20, &apos;8:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    21, &apos;9:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    22, &apos;10:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    23, &apos;11:&apos; &amp; LPAD(TEXT(MINUTE({!Loop_Update_Name.s_c__Start_Time__c})), 2, &apos;0&apos;) &amp; &apos; PM&apos;,
+    &apos;&apos;
+)</expression>
+    </formulas>
+    <interviewLabel>SF: Update Bookable Event Names {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SF: Update Bookable Event Names</label>
+    <loops>
+        <name>Loop_Update_Name</name>
+        <label>Loop: Update Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Bookable_Events</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Update_Name</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Names</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Bookable_Events</name>
+        <label>Get Bookable Events</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Update_Name</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>s_c__Bookable_Event__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Names</name>
+        <label>Update Names</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>S1</targetReference>
+        </connector>
+        <inputReference>vars_BEs</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>S1</name>
+        <label>S1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>DT_Update</name>
+            <fieldText>&lt;p&gt;Updates Names to:&lt;/p&gt;&lt;p&gt;{!vars_BEs}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Bookable_Events</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>var_BE</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>s_c__Bookable_Event__c</objectType>
+    </variables>
+    <variables>
+        <name>vars_BEs</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>s_c__Bookable_Event__c</objectType>
+    </variables>
+</Flow>

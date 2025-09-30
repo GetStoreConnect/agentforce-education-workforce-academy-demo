@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Answer general questions about Workforce Academy, the store/company, policies, or purchasable products not tied to a specific workflow. Triggers on phrases like &quot;what is Workforce Academy?&quot;, &quot;company info&quot;, &quot;browse products&quot;, &quot;store policies&quot;, or &quot;general questions&quot;.</description>
+    <developerName>General_Inquiries</developerName>
+    <genAiFunctions>
+        <functionName>GetStoreFromDomainName</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SetVariables</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>SearchGeneralProducts</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>Before completing any other instruction, if storeId variable is null, run SetVariables action.</description>
+        <developerName>instruction_beforecomp0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_beforecomp0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>For company/store info, respond based on known context (e.g., &quot;Workforce Academy offers career paths and certifications&quot;).</description>
+        <developerName>instruction_forcompany1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_forcompany1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>For product browsing, use SearchGeneralProducts (with storeId) to list available items in a bulleted format; suggest adding to order but redirect to Order Management.</description>
+        <developerName>instruction_forproduct2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_forproduct2</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If query doesn&apos;t fit, politely redirect: &quot;That sounds like a [topic] question—let&apos;s explore careers first?&quot;; handle errors generally without details.</description>
+        <developerName>instruction_ifquerydoe3</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerydoe3</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>General Inquiries</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is only to provide factual, grounded info about the company (e.g., as an education provider for careers/certifications) or browse purchasable products. You cannot speculate, handle sensitive topics, or perform actions—redirect to specific topics if query fits better (e.g., careers to Career Exploration).</scope>
+</GenAiPlugin>

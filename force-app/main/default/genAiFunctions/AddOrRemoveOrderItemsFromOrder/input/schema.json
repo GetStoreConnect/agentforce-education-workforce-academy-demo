@@ -1,0 +1,36 @@
+{
+  "required" : [ "orderId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "addProductIdsToOrder" : {
+      "title" : "addProductIdsToOrder",
+      "description" : "Optional: A String[] list of 18 character alphanumeric Salesforce Product2 Ids to add to the Order as line items. Ask the user to select the products to add from the product2 records.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__textType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "orderId" : {
+      "title" : "orderId",
+      "description" : "The orderId of the Order with OrderItems to update. This is an 18 character alphanumeric Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "removeProductIdsFromOrder" : {
+      "title" : "removeProductIdsFromOrder",
+      "description" : "Optional: A String[] list of 18 character alphanumeric Salesforce Product2 Ids to remove from this order. Ask the user to select the products from the existing orderItems to remove.",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__textType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

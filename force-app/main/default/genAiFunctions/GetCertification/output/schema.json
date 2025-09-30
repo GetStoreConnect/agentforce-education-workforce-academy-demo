@@ -1,0 +1,27 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "certification" : {
+      "title" : "certification",
+      "description" : "The certification record found from the certification name. Provide concise responses with key information only, unless the user explicitly requests more details.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "s_c__Product_Category__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "certificationId" : {
+      "title" : "certificationId",
+      "description" : "The certification product category Id the user has chosen. Use this Id when getting the list of modules for the chosen certification. If no value is returned, try again with a different name or spelling. Ask the user to select or suggest a different certification.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
