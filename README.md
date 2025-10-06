@@ -1,6 +1,8 @@
 # StoreConnect Workforce Academy Agentforce Package
 
-This repository contains the metadata for the StoreConnect Workforce Academy second-generation (2GP) managed package that powers the Workforce Academy Agentforce demo. It bundles the flows, Apex services and Agentforce (GenAI) assets required to deliver conversational commerce, career exploration, and booking experiences backed by StoreConnect.
+This repository contains the metadata for the StoreConnect Workforce Academy second-generation (2GP) managed package that powers the StoreConnect Workforce Academy demo available at [agentforce-edu.storeconnectdemo.com](https://agentforce-edu.storeconnectdemo.com/). It bundles the flows, Apex services and Agentforce (GenAI) assets required to deliver conversational commerce, career exploration, and booking experiences backed by StoreConnect.
+
+Currently this project uses the Order record to create the checkout cart and has other limitations. It is a proof of concept only and should only be used as a base to develop out your own StoreConnect powered Agentforce chat agent.
 
 ## Highlights
 - 2GP-ready Salesforce DX project aligned to StoreConnect Workforce Academy storytelling.
@@ -125,4 +127,6 @@ storeId: "{{ current_store.id }}"
 ```
 
 ## Support & Contributions
+This is an open source repository and no direct Agentforce support is provided by StoreConnect beyond direct help on StoreConnect specific functions. For assistance with Agentforce more generally, please contact one of our StoreConnect partners.
+
 This project is maintained by StoreConnect for the Workforce Academy demo. Community contributions are welcome via issues. For product assistance, contact [support@getstoreconnect.com](mailto:support@getstoreconnect.com) or visit [support.getstoreconnect.com](https://support.getstoreconnect.com/).
