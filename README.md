@@ -1,12 +1,12 @@
 # StoreConnect Workforce Academy Agentforce Package
 
-This repository contains the metadata for the StoreConnect Workforce Academy second-generation (2GP) managed package that powers the Workforce Academy Agentforce demo. It bundles the flows, Apex services, Lightning components, and Agentforce (GenAI) assets required to deliver conversational commerce, career exploration, and booking experiences backed by StoreConnect.
+This repository contains the metadata for the StoreConnect Workforce Academy second-generation (2GP) managed package that powers the Workforce Academy Agentforce demo. It bundles the flows, Apex services and Agentforce (GenAI) assets required to deliver conversational commerce, career exploration, and booking experiences backed by StoreConnect.
 
 ## Highlights
 - 2GP-ready Salesforce DX project aligned to StoreConnect Workforce Academy storytelling.
 - End-to-end Agentforce implementation, including topic plugins, GenAI functions, and renderer LWCs for rich order and booking responses.
 - Opinionated flows and Apex classes for order creation, catalog discovery, booking management, and contact lifecycle automation.
-- Permission sets and custom metadata that simplify demo setup without exposing internal developer tooling.
+- Permission sets and custom metadata that simplify demo setup.
 
 ## Managed Package Dependencies
 Install the required managed package versions before deploying or packaging this metadata. They are already declared in `sfdx-project.json`.
@@ -24,7 +24,7 @@ sf package install --package 04tMn000002S8vxIAC --wait 20 --no-prompt
 ```
 
 ### Org Prerequisites
-- Person Accounts must be enabled. The included scratch org definition (`config/project-scratch-def.json`) turns this on automatically; enable it in target orgs before deploying the metadata to match the intended configuration.
+- Person Accounts should be enabled. The included scratch org definition (`config/project-scratch-def.json`) turns this on automatically; enable it in target orgs before deploying the metadata to match the intended configuration.
 
 ## Agentforce Assets
 ### Topic Plugins
@@ -54,9 +54,8 @@ Function metadata lives under `force-app/main/default/genAiFunctions/<FunctionNa
 ## Additional Metadata
 - **Flows**: Twenty-seven flows that back each Agentforce function, including `AF_UAIS00x` sub-flows, booking orchestration, and the `RTF_*` fulfillment automations for payments and bookings.
 - **Apex services**: `AF_IM_GetOrder`, `AF_IM_GetOrders`, `BA_IM_GetOrderItemTimeSlots`, and the `BookingAvailability*` utilities expose invocable methods for rendering order data and calculating availability.
-- **Lightning Web Components**: `ordersRenderer` and `orderRenderer` render single or multiple orders within Agentforce responses, formatting URLs and booking context.
+- **Lightning Web Components**: `ordersRenderer` and `orderRenderer` render single or multiple orders within Agentforce responses, formatting URLs and booking context. These were proof of concept and not currently implemented as part of the demo.
 - **Permission sets**: Purpose-built demo roles such as `StoreConnect_Agentforce_Permissions`, `Career_Messaging_Support_Team`, and `Sync_User_Agent_Permissions` accelerate org setup.
-- **Static resources**: `SiteSamples` bundles reference assets for the Workforce Academy storefront experience.
 - **Manifest**: `manifest/package.xml` surfaces the primary metadata classes to include when creating a package version.
 
 ## Working With the Project
@@ -65,10 +64,6 @@ Function metadata lives under `force-app/main/default/genAiFunctions/<FunctionNa
 3. Deploy the source (`sf project deploy start --source-dir force-app`).
 4. Assign the relevant permission sets to your test users.
 5. Configure Agentforce topics to reference the included plugins and verify conversations via the Workforce Academy storefront.
-
-To create or update the 2GP package:
-- Update `sfdx-project.json` with your package aliases and run `sf package version create --package <alias> --installation-key-bypass --code-coverage` from the project root.
-- Promote and install the resulting version in target orgs after automated validation completes.
 
 ## Support & Contributions
 This project is maintained by StoreConnect for the Workforce Academy demo. Community contributions are welcome via issues. For product assistance, contact [support@getstoreconnect.com](mailto:support@getstoreconnect.com) or visit [support.getstoreconnect.com](https://support.getstoreconnect.com/).
