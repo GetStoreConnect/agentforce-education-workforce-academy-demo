@@ -65,5 +65,64 @@ Function metadata lives under `force-app/main/default/genAiFunctions/<FunctionNa
 4. Assign the relevant permission sets to your test users.
 5. Configure Agentforce topics to reference the included plugins and verify conversations via the Workforce Academy storefront.
 
+## Salesforce and Store Setup for Agent
+| Step | Action | Notes|
+| --- | --- | --- |
+| 1. | Create your Agent | Create your Agentforce Agent, you can see the setup steps [here](https://www.salesforce.com/en-us/wp-content/uploads/sites/4/Agentforce.pdf) |
+| 2. | Enable Omni-Channel | Navigate to Setup > enter Omni Channel in the Quick Find box > click Omni Channel Settings. Click the Enable Omni-Channel checkbox > click Save.  |
+| 3. | Omni-Flow Setup | The packaged flow `AF_Omni_Channel_Messaging_Routing_Agentforce` will need to be updated with your local orgs references. |
+| 4. | Add a Messaging Channel | Search Messaging Settings in setup. Create a new Messaging Channel for Web. Configure with Omni-Channel Routing to the flow and fallback queue. | 
+| 5. | Configure Parameters| Add any parameters and parameter mappings here that you want to pass from the StoreConnect site to the agent (eg storeId and customerId) |
+| 6. | Service Deployment Creation | Go to Embedded Service Deployment, create new deployment for web, det you name and domain the chat will be hosted and messaging channel.  |
+| 7. | Service Deployment Config | Enable Pre-Chat fields, this will allow the Agent start of session contex (eg the current Store and Customer and any other values you want). Configure other settings as desired. |
+| 8. | Publish and Activate | Before adding the code to the StoreConnect site, ensure the Agent is active with correct permissions, Messaging Channel is activated, Omni-Flow is active, Embedded Service Deployment is bpulished and site domain is added to the correct sf site as a Trusted Domains for Inline Frames |
+| 9. | Install your Embed Code | For a global chat, add a content block to you store under Content --> Global Content --> Body Content, create a new content block and add the code (example below) |
+
+### Sample Embed Code
+```liquid
+
+<script type="text/javascript">
+
+function initEmbeddedMessaging() {
+try {
+embeddedservice_bootstrap.settings.language = 'en_US';
+
+embeddedservice_bootstrap.init(
+'some salesforce org id',
+'some embedded service name', 
+'https://some-org-id.develop.my.site.com/some-site-url',
+{
+scrt2URL: 'https://some-cs-url.develop.my.salesforce-scrt.com'
+}
+);
+} catch (err) {
+console.error('Error loading Embedded Messaging: ', err);
+}
+}
+</script>
+
+{% if current_customer %} 
+<script type="text/javascript">
+window.addEventListener("onEmbeddedMessagingReady", function() {
+embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+scId: "{{ current_customer.id }}",
+storeId: "{{ current_store.id }}"
+});
+});
+</script>
+{% else %}
+<script type="text/javascript">
+window.addEventListener("onEmbeddedMessagingReady", function() {
+embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+storeId: "{{ current_store.id }}"
+});
+});
+</script>
+{% endif %}
+
+<script type='text/javascript' src='https://some-org.develop.my.site.com/SomeDomain/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+```
+
 ## Support & Contributions
 This project is maintained by StoreConnect for the Workforce Academy demo. Community contributions are welcome via issues. For product assistance, contact [support@getstoreconnect.com](mailto:support@getstoreconnect.com) or visit [support.getstoreconnect.com](https://support.getstoreconnect.com/).
