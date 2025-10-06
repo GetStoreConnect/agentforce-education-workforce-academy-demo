@@ -79,6 +79,7 @@ Function metadata lives under `force-app/main/default/genAiFunctions/<FunctionNa
 | 7. | Service Deployment Config | Enable Pre-Chat fields, this will allow the Agent start of session contex (eg the current Store and Customer and any other values you want). Configure other settings as desired. |
 | 8. | Publish and Activate | Before adding the code to the StoreConnect site, ensure the Agent is active with correct permissions, Messaging Channel is activated, Omni-Flow is active, Embedded Service Deployment is bpulished and site domain is added to the correct sf site as a Trusted Domains for Inline Frames |
 | 9. | Install your Embed Code | For a global chat, add a content block to you store under Content --> Global Content --> Body Content, create a new content block and add the code (example below) |
+| 10. | Make the agent context aware | To pass the Store Parameters to the Agent, we save the store and contat IDs to the messaging session record in the omni-channel flow, then when the agent executes actions, one such action sets the variables so it's now aware of the store and if the current user is logged in. |
 
 ### Sample Embed Code
 ```liquid
