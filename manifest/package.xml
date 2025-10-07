@@ -2,20 +2,18 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>AF_IM_GetOrder</members>
+		<members>AF_IM_GetOrder_Test</members>
 		<members>AF_IM_GetOrders</members>
+		<members>AF_IM_GetOrders_Test</members>
 		<members>BA_IM_GetOrderItemTimeSlots</members>
+		<members>BA_IM_GetOrderItemTimeSlots_Test</members>
 		<members>BookingAvailabilityCalculator</members>
+		<members>BookingAvailabilityCalculator_Test</members>
+		<members>BookingAvailabilityInvocables_Test</members>
 		<members>BookingAvailability_IM_GetHighlightTimes</members>
 		<members>BookingAvailability_IM_GetTimeSlots</members>
+		<members>WorkforceAcademyTestData</members>
 		<name>ApexClass</name>
-	</types>
-	<types>
-		<members>OrderItemContactJsonTrigger</members>
-		<name>ApexTrigger</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
 		<members>MessagingSession.Contact__c</members>
@@ -94,10 +92,6 @@
 		<members>StoreConnect_Agentforce_Permissions</members>
 		<members>Sync_User_Agent_Permissions</members>
 		<name>PermissionSet</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>StaticResource</name>
 	</types>
 	<version>64.0</version>
 </Package>

@@ -2,11 +2,23 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "dependencies": [
+        {
+          "subscriberPackageVersionId": "04tMn000002kiZZIAY"
+        },
+        {
+          "subscriberPackageVersionId": "04tMn000002S8vxIAC"
+        }
+      ]
     }
   ],
   "name": "WorkforceAcademy",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "64.0"
+  "sourceApiVersion": "64.0",
+  "packageAliases": {
+    "StoreConnect eCommerce v20.6": "04tMn000002kiZZIAY",
+    "StoreConnect Agentforce Package v1.7": "04tMn000002S8vxIAC"
+  }
 }

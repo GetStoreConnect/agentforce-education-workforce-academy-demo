@@ -1,8 +1,14 @@
 {
   "orgName": "StoreConnect",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "features": [
+    "EnableSetPasswordInApi",
+    "PersonAccounts"
+  ],
   "settings": {
+    "accountSettings": {
+      "enablePersonAccounts": true
+    },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
